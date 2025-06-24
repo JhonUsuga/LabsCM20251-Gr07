@@ -1,8 +1,11 @@
 package co.edu.udea.compumovil.gr07_20251.lab2
 
+import android.Manifest
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.core.app.ActivityCompat
 import androidx.work.*
 import co.edu.udea.compumovil.gr07_20251.lab2.navigation.AppNavigation
 import co.edu.udea.compumovil.gr07_20251.lab2.ui.theme.Lab2Theme
@@ -13,15 +16,21 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Programar Worker al abrir la app (cada 12 horas)
-        val workRequest = PeriodicWorkRequestBuilder<SyncEpisodesWorker>(12, TimeUnit.HOURS)
+        // Solicitar permiso de notificaciones en Android 13+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                1001
+            )
+        }
+
+        // Ejecutar el Worker de prueba
+        val testRequest = OneTimeWorkRequestBuilder<SyncEpisodesWorker>()
+            .setInitialDelay(5, TimeUnit.SECONDS)
             .build()
 
-        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
-            "PodcastSync",
-            ExistingPeriodicWorkPolicy.KEEP,
-            workRequest
-        )
+        WorkManager.getInstance(applicationContext).enqueue(testRequest)
 
         // Jetpack Compose Navigation
         setContent {
@@ -31,3 +40,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+

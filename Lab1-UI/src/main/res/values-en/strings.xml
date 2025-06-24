@@ -9,4 +9,6 @@
     <string name="feed_url">Feed URL:</string>
     <string name="no_feed">Feed URL not available</string>
     <string name="resume">Resume</string>
+    <string name="notification_sync_complete">Synchronized %1$d episodes.</string>
+    <string name="notification_sync_title">Sync complete</string>
 </resources>

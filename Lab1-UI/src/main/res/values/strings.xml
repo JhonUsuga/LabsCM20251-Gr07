@@ -9,4 +9,6 @@
     <string name="feed_url">URL del Feed:</string>
     <string name="no_feed">URL no disponible</string>
     <string name="resume">Reanudar</string>
+    <string name="notification_sync_complete">Se sincronizaron %1$d episodios.</string>
+    <string name="notification_sync_title">Sincronización completa</string>
 </resources>
