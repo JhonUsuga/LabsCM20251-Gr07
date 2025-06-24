@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Labs20251-Gr07</string>
+    <string name="podcast_list_title">Podcasts</string>
+    <string name="podcast_detail_title">Detalle del Podcast</string>
+    <string name="author">Autor</string>
+    <string name="play">Reproducir</string>
+    <string name="stop">Detener</string>
+    <string name="loading">Cargando...</string>
+    <string name="feed_url">URL del Feed:</string>
+    <string name="no_feed">URL no disponible</string>
+    <string name="resume">Reanudar</string>
+</resources>
